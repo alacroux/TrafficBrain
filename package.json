@@ -1,0 +1,23 @@
+{
+    "name": "traffic_brain",
+    "version": "1.0.0",
+    "description": "A brain to manage traffic lights at an intersection",
+    "person": { 
+        "name" : "Alexandre Lacroux", 
+        "email" : "lacroux.alex@gmail.com",
+        "url" : "https://github.com/alacroux"
+    },
+    "dependencies": {
+        "express": "latest",
+        "socket.io": "1.5.0",
+        "request": "latest",
+        "body-parser": "~1.0.1",
+        "underscore": "latest"
+    },
+    "devDependencies": {
+        "chai": "*",
+        "mocha": "*"
+    },
+    "private": true,
+    "main": "app.js"
+}

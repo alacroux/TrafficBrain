@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="TrafficBrain">
+    <head>
+        <title>Traffic Brain</title>
+        <style type="text/css">
+            .circle { -webkit-border-radius: 30px; -moz-border-radius: 30px; border-radius: 30px; width: 30px; height: 30px; }
+            .intersection { width: 300px; }
+            .north { margin: 10px auto 40px; width: 30px; }
+            .south { margin: 60px auto; width: 30px; }
+            .west, .east { display: inline-block; vertical-align: middle; }
+            .west { width: 266px; }
+            .east{ width: 30px; }
+        </style>
+    </head>    
+    <body ng-controller="AppCtrl">
+        <div class="intersection">
+            <div class="north">
+                <div class="circle" style="background-color: {{intersection.northSouth}}"></div>
+            </div>
+            <div class="west">
+                <div class="circle" style="background-color: {{intersection.eastWest}}"></div>
+            </div>
+            <div class="east">
+                <div class="circle" style="background-color: {{intersection.eastWest}}"></div>
+            </div>
+            <div class="south">
+                <div class="circle" style="background-color: {{intersection.northSouth}}"></div>
+            </div>
+        </div>
+    </body>
+    
+    <script type="text/javascript"
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    
+    <script>
+        // Angular app
+        var trafficBrain = angular.module("TrafficBrain", []);
+
+        // Angular controller of the app
+        trafficBrain.controller('AppCtrl', ['$scope', function($scope) {
+            
+            // Init of the socket and listenning to update event
+            var socket = io.connect();
+            
+            // On update event, we update the intersection object in the angular scope
+            socket.on("update", function (intersection) {
+                $scope.intersection = intersection;
+                $scope.$apply();
+            });
+        
+        }]);
+    </script>
+</html>
