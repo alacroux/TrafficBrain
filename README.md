@@ -17,6 +17,11 @@ Tests
 To run unit tests, run 'Mocha' command.
 
 
+Output
+
+In the output directory, you'll find the output for the light changes which occur during a given thirty minute period.
+
+
 Contact
 
 If you have any questions or requests, email me at lacroux.alex@gmail.com
